@@ -1,0 +1,23 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/managed-by: epinio
+  name: test-dpl
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      key: value
+  template:
+    metadata:
+      labels:
+        key: value
+    spec:
+      containers:
+        - name: edns
+          image: gcr.io/distroless/static:nonroot
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
